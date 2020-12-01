@@ -1,0 +1,71 @@
+package javapra;
+
+class QueueA<T>{
+	T[] data;
+	int front,rear;
+	int length;
+  
+	QueueA(T[] a){
+		data=a;
+		front=0;
+		rear=-1;
+		length=a.length;
+	}
+  
+	public void enque(T a) {
+		if(rear>=length-1) 
+			System.out.println("fulled");
+		else {
+			rear++;
+			data[rear]=a;
+		}
+	}
+  
+	public  T deque() {
+		T x=null;
+		if(isEmpty()) {
+			System.out.println("empty");
+			return null;
+		}
+		else {
+			x=data[front];
+			front++;
+			return x;
+		}
+	}
+
+	public boolean isEmpty(){
+		if(front>rear) 
+			return true;
+		else
+			return false;		
+	}
+  
+	public void printQueueA() {
+		if(!isEmpty()) {
+			for(int i=front;i<=rear;i++)
+				System.out.print(data[i]+" ");
+			System.out.println();
+		}
+	}
+  
+}
+
+
+
+public class queue{
+	public static void main(String[] args) {
+  
+		Integer[] arr=new Integer[2];
+    
+		QueueA<Integer> Q=new QueueA<>(arr);
+    
+		Q.enque(23);
+		Q.enque(112);
+		Q.deque();
+    Q.deque();
+    Q.deque();
+		Q.printQueueA();
+		
+	} 
+}
